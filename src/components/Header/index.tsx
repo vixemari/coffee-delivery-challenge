@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 export function Header() {
   return (
     <HeaderContainer>
-      <img  src={logo} alt="Logo"  height={40} />
+      <Link to="/">
+        <img  src={logo} alt="Logo"  height={40} />
+      </Link>
       <Aside>
         <div>
         <MapPin size={22} weight="fill" />
