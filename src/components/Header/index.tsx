@@ -1,6 +1,6 @@
 import { MapPin, ShoppingCart  } from "phosphor-react";
 import { HeaderContainer, Aside } from "./styles.";
-import logo from "../../assets/Logo.svg";
+import logo from "../../images/Logo.svg";
 import { Link } from "react-router-dom";
 
 export function Header() {
