@@ -58,7 +58,6 @@ export function Home() {
         </TitleContainer>
         <img src={home} alt="Home" />
       </Section>
-
       <CoffeeList>
       <h2>Nossos cafés</h2>
       <div>

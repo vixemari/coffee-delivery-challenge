@@ -1,7 +1,8 @@
 import { CardContainer, CoffeeImage, Tag, Title, Description, OrderContainer, Price, Order, CartButton } from './styles'
 import { QuantityInput } from '../Form/QuantityInput'
 import { ShoppingCart } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CoffeeContext } from '../../context/context'
 
 interface CardProps {
   coffee: {
@@ -16,6 +17,7 @@ interface CardProps {
 
 export function Card({ coffee }: CardProps) {
   const [quantity, setQuantity] = useState(0)
+  const { addItem } = useContext(CoffeeContext)
 
   function increment() {
     setQuantity(quantity + 1)
@@ -25,6 +27,11 @@ export function Card({ coffee }: CardProps) {
     if (quantity > 0) {
       setQuantity(quantity - 1)
     }
+  }
+
+  const addToCart = () => {
+    addItem({id: coffee.id, quantity})
+    setQuantity(0)
   }
 
   return (
@@ -51,7 +58,7 @@ export function Card({ coffee }: CardProps) {
               increment={increment}
               decrement={decrement}
             />
-            <CartButton>
+            <CartButton type='button' onClick={() => addToCart()}>
               <ShoppingCart size={22} weight="fill" />
             </CartButton>
           </Order>
