@@ -54,6 +54,11 @@ export const PaymentOptions = styled.div`
     text-transform: uppercase;
     transition: all 0.2s;
 
+    &:hover {
+      cursor: pointer;
+      background-color: ${({ theme }) => theme['base-hover']};
+    }
+
 
     span {
       ${mixins.fonts.textM}

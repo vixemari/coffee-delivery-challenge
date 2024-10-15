@@ -17,7 +17,7 @@ export function Home() {
           <Info>
             <div>
               <ShoppingCart
-                size={22}
+                size={32}
                 weight="fill"
                 style={{ backgroundColor: theme['yellow-dark'] }}
                 color={theme['background']}
@@ -26,7 +26,7 @@ export function Home() {
             </div>
             <div>
               <Package
-                size={22}
+                size={32}
                 weight="fill"
                 style={{ backgroundColor: theme['base-text'] }}
                 color={theme['background']}
@@ -35,7 +35,7 @@ export function Home() {
             </div>
             <div>
               <Timer
-                size={22}
+                size={32}
                 weight="fill"
                 style={{ backgroundColor: theme['yellow'] }}
                 color={theme['background']}
@@ -44,7 +44,7 @@ export function Home() {
             </div>
             <div>
               <Coffee
-                size={22}
+                size={32}
                 weight="fill"
                 style={{ backgroundColor: theme['purple'] }}
                 color={theme['background']}
