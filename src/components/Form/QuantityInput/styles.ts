@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
    padding-top: 2px;
    background-color: ${(props) => props.theme['base-button']};
-    border-radius: 6px;
+   border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
   button {
     background-color: transparent;
@@ -24,7 +27,6 @@ export const Container = styled.div`
   }
 
   span {
-    padding-top: 2px;
     color: ${(props) => props.theme['base-title']};
   }
 

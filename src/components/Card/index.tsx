@@ -1,26 +1,56 @@
 import { CardContainer, CoffeeImage, Tag, Title, Description, OrderContainer, Price, Order, CartButton } from './styles'
-import Cafe from '../../images/coffees/americano.png'
 import { QuantityInput } from '../Form/QuantityInput'
 import { ShoppingCart } from 'phosphor-react'
+import { useState } from 'react'
 
-export function Card() {
+interface CardProps {
+  coffee: {
+    id: string
+    title: string
+    description: string
+    price: number
+    image: string
+    tags: string[]
+  }
+}
+
+export function Card({ coffee }: CardProps) {
+  const [quantity, setQuantity] = useState(0)
+
+  function increment() {
+    setQuantity(quantity + 1)
+  }
+
+  function decrement() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1)
+    }
+  }
+
   return (
     <CardContainer>
       <div>
-        <CoffeeImage src={Cafe} alt="Café" />
+        <CoffeeImage src={coffee.image} alt={coffee.title} />
         <Tag>
-          <span>Novidade</span>
+          {coffee.tags.map((tag, index) => (
+            <span key={index}>{tag}</span>
+          ))}
           </Tag>
-        <Title>Café Americano</Title>
-        <Description>Café puro e forte</Description>
-
+        <Title>{coffee.title}</Title>
+        <Description>{coffee.description}</Description>
         <OrderContainer>
           <Price>
             <span>R$</span>
-            <span>12,00</span>
+            <span>{
+              coffee.price.toFixed(2).replace('.', ',')
+              }</span>
           </Price>
           <Order>
-            <QuantityInput />
+            <QuantityInput
+              quantity={quantity}
+              increment={increment}
+              decrement={decrement}
+            />
             <CartButton>
               <ShoppingCart size={22} weight="fill" />
             </CartButton>
