@@ -5,9 +5,6 @@ import { mixins } from '../../styles/mixins'
 export const HomeCointainer = styled.div`
   position: relative;
 
-
-
-
 `;
 
 export const Section = styled.section`
@@ -27,8 +24,6 @@ export const TitleContainer = styled.div`
   h1 {
     ${mixins.fonts.titleXL}
     color: ${({ theme }) => theme['base-title']};
-
-
   }
 
   p {
