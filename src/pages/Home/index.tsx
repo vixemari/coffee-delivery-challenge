@@ -61,6 +61,10 @@ export function Home() {
       <h2>Nossos cafés</h2>
       <div>
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
       </CoffeeList>
     </HomeCointainer>

@@ -1,15 +1,29 @@
 import styled from "styled-components";
 import { mixins } from '../../../../styles/mixins'
 
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  area: string;
+}
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
 
   form {
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin-left: 16px;
+    display: grid;
+    grid-template-areas:
+    'cep . .'
+    'street street street'
+    'number fullAddress fullAddress'
+    'neighborhood city state';
+  grid-template-columns: 200px 1fr 60px;
+  grid-gap: 16px 12px;
+
   }
 `;
 
@@ -30,8 +44,8 @@ export const Card = styled.div`
   flex-direction: column;
   gap: 16px;
   background-color: ${(props) => props.theme['base-card']};
-  padding: 16px;
   border-radius: 6px;
+  padding: 25px;
 `;
 
 export const Info = styled.div`
@@ -58,13 +72,14 @@ export const Info = styled.div`
   }
 `;
 
-export const Input = styled.input`
-    color: ${({ theme }) => theme['base-text']};
-    width: 100%;
-    background-color: transparent;
-    border: none;
+export const Input = styled.input<InputProps>`
+    background-color: ${({ theme }) => theme['base-input']};
+    border: 1px solid ${({ theme }) => theme['base-button']};
+    border-radius: 6px;
     padding: 12px;
     outline: none;
+    grid-area: ${(props) => props.area};
+
 
     &::placeholder {
       color: ${({ theme }) => theme['base-label']};

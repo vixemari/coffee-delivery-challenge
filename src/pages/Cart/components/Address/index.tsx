@@ -25,11 +25,42 @@ export function Address() {
           <span>Informe o endereço onde deseja receber seu pedido</span>
         </Info>
         <form>
-          <Input type="text" placeholder="Cep" />
-          <Input type="text" placeholder="Rua" />
-          <Input type="text" placeholder="Numero" />
-          <Input type="text" placeholder="Cidade" />
-          <Input type="text" placeholder="Estado" />
+          <Input
+            type="text"
+            placeholder="Cep"
+            area="cep"
+          />
+          <Input
+            type="text"
+            placeholder="Rua"
+            area="street"
+          />
+          <Input
+          type="text"
+          placeholder="Numero"
+          area="number"
+          />
+          <Input
+          type="text"
+          placeholder="Complemento"
+          area="fullAddress"
+          />
+          <Input
+          type="text"
+          placeholder="Bairro"
+          area="neighborhood"
+          />
+
+          <Input
+          type="text"
+          placeholder="Cidade"
+          area="city"
+          />
+          <Input
+          type="text"
+          placeholder="UF"
+          area="state"
+          />
         </form>
       </Card>
 

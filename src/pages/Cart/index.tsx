@@ -1,18 +1,16 @@
 import { Address } from "./components/Address";
 import { CartDetails } from "./components/CartDetails";
 import { Payment } from "./components/Payment";
-import { Row, Col } from "./styles";
+import { Row } from "./styles";
 
 export function Cart() {
   return (
     <Row>
-      <Col>
+      <div>
         <Address />
         <Payment />
-      </Col>
-      <Col>
+      </div>
         <CartDetails />
-      </Col>
     </Row>
   );
 }
