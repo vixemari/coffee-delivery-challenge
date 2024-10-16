@@ -3,14 +3,18 @@ import { mixins } from '../../../../styles/mixins'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   area: string;
+  error?: object;
+  placeholder: string | undefined;
 }
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+`;
 
-  form {
+export const FormCard = styled.div`
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -24,8 +28,8 @@ export const Container = styled.div`
     grid-template-columns: 200px 1fr 60px;
     grid-gap: 16px 12px;
 
-  }
-`;
+  `
+
 
 export const Header = styled.div`
   display: flex;
@@ -73,23 +77,21 @@ export const Info = styled.div`
 `;
 
 export const Input = styled.input<InputProps>`
-    background-color: ${({ theme }) => theme['base-input']};
-    border: 1px solid ${({ theme }) => theme['base-button']};
+  background-color: ${({ theme }) => theme['base-input']};
+  border: 1px solid ${({ theme, error }) => error ? 'red' : theme['base-button']};
+  border-radius: 6px;
+  padding: 12px;
+  outline: none;
+  grid-area: ${(props) => props.area};
+
+  &::placeholder {
+    color: ${({ theme }) => theme['base-text']};
+  }
+
+  &:focus {
+    border: 1px solid ${({ theme, error }) => error ? 'red' : theme['yellow-dark']};
     border-radius: 6px;
-    padding: 12px;
-    outline: none;
-    grid-area: ${(props) => props.area};
-
-
-    &::placeholder {
-      color: ${(props) => props.theme['base-text']};
-    }
-
-    &:focus {
-      border: 1px solid ${({ theme }) => theme['yellow-dark']};
-      border-radius: 6px;
-    }
-
+  }
 `;
 export const ErrorMessage = styled.p`
   ${mixins.fonts.textXS};

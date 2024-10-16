@@ -6,7 +6,7 @@ import { CoffeeContext } from '../../context/context'
 
 interface CardProps {
   coffee: {
-    id: string
+    id:  string
     title: string
     description: string
     price: number

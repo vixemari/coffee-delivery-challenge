@@ -13,12 +13,13 @@ export function Payment() {
     debit: false,
     cash: false
   })
+
   const handleSelectPayment = (payment: string) => {
     setIsSelected(prevState => ({
       ...prevState,
       credit: payment === 'credit',
       debit: payment === 'debit',
-      money: payment === 'cash'
+      cash: payment === 'cash'
     }))
     addPayment(payment)
   }

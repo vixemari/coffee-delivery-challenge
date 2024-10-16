@@ -157,4 +157,9 @@ export const CheckoutButton = styled.button`
   }
 
   border-radius: 6px;
+
+  &:disabled {
+    background-color: ${({ theme }) => theme['base-button']};
+    cursor: not-allowed;
+  }
 `
