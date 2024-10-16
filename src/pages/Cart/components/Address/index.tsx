@@ -1,12 +1,14 @@
 import { MapPin } from 'phosphor-react';
-import { Container, Header, Card, Info, Input } from './styles';
+import { useFormContext } from "react-hook-form";
 import { useTheme } from 'styled-components'
-
-
+import { Container, Header, Card, Info, Input, ErrorMessage } from './styles';
 
 
 export function Address() {
   const theme = useTheme()
+  const {
+    register,
+    formState: { errors } } = useFormContext()
 
   return (
     <Container>
@@ -17,8 +19,8 @@ export function Address() {
         <Info>
           <div>
             <MapPin
-            size={24}
-            color={theme['yellow-dark']}
+              size={24}
+              color={theme['yellow-dark']}
             />
             <span>Endereço de entrega</span>
           </div>
@@ -26,44 +28,50 @@ export function Address() {
         </Info>
         <form>
           <Input
-            type="text"
-            placeholder="Cep"
+            type="number"
+            placeholder="CEP"
             area="cep"
+            {...register('cep', { valueAsNumber: true })}
+            error={errors.cep}
           />
           <Input
             type="text"
             placeholder="Rua"
             area="street"
+            {...register('street')}
           />
           <Input
-          type="text"
-          placeholder="Numero"
-          area="number"
+            type="number"
+            placeholder="Numero"
+            area="number"
+            {...register('number', { valueAsNumber: true })}
           />
           <Input
-          type="text"
-          placeholder="Complemento"
-          area="fullAddress"
+            type="text"
+            placeholder="Complemento"
+            area="fullAddress"
+            {...register('fullAddress')}
           />
           <Input
-          type="text"
-          placeholder="Bairro"
-          area="neighborhood"
-          />
-
-          <Input
-          type="text"
-          placeholder="Cidade"
-          area="city"
+            type="text"
+            placeholder="Bairro"
+            area="neighborhood"
+            {...register('neighborhood')}
           />
           <Input
-          type="text"
-          placeholder="UF"
-          area="state"
+            type="text"
+            placeholder="Cidade"
+            area="city"
+            {...register('city')}
+          />
+          <Input
+            type="text"
+            placeholder="UF"
+            area="state"
+            {...register('state')}
           />
         </form>
       </Card>
-
     </Container>
   )
 }

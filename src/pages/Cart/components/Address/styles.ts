@@ -21,8 +21,8 @@ export const Container = styled.div`
     'street street street'
     'number fullAddress fullAddress'
     'neighborhood city state';
-  grid-template-columns: 200px 1fr 60px;
-  grid-gap: 16px 12px;
+    grid-template-columns: 200px 1fr 60px;
+    grid-gap: 16px 12px;
 
   }
 `;
@@ -82,7 +82,7 @@ export const Input = styled.input<InputProps>`
 
 
     &::placeholder {
-      color: ${({ theme }) => theme['base-label']};
+      color: ${(props) => props.theme['base-text']};
     }
 
     &:focus {
@@ -91,3 +91,8 @@ export const Input = styled.input<InputProps>`
     }
 
 `;
+export const ErrorMessage = styled.p`
+  ${mixins.fonts.textXS};
+  font-weight: 400;
+  color: red;
+`

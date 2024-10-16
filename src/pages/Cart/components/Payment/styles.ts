@@ -40,9 +40,9 @@ export const Info = styled.div`
 export const PaymentOptions = styled.div`
   display: flex;
   gap: 16px;
+`
 
-
-  div {
+  export const Option = styled.div`
     padding: 16px;
     width: 100%;
     display: flex;
@@ -59,11 +59,14 @@ export const PaymentOptions = styled.div`
       background-color: ${({ theme }) => theme['base-hover']};
     }
 
-
     span {
       ${mixins.fonts.textM}
       color: ${(props) => props.theme['base-text']};
     }
 
+    &[data-state='true'] {
+    background-color: ${({ theme }) => theme['purple-light']};
+    border-color: ${({ theme }) => theme.purple};
   }
+
 `;

@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import { cartReducer, Item, Order } from "../reducers/reducers";
-import { addItemAction, removeItemAction } from "../reducers/actions";
+import { addItemAction, removeItemAction, selectPaymentAction } from "../reducers/actions";
 
 
 interface CoffeeContextType {
@@ -8,6 +8,7 @@ interface CoffeeContextType {
   orders: Order[]
   addItem: (item: Item) => void
   removeItens: (itemId: Item['id']) => void
+  addPayment: (payment: string) => void
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextType)
@@ -29,13 +30,18 @@ export function CoffeeContextProvider({ children }: CoffeeProviderProps) {
     dispatch(removeItemAction(itemId))
   }
 
+  const addPayment = (payment: string) => {
+    dispatch(selectPaymentAction(payment))
+  }
+
   return (
     <CoffeeContext.Provider
     value={{
       cart,
       orders,
       addItem,
-      removeItens
+      removeItens,
+      addPayment
     }}>
       {children}
     </CoffeeContext.Provider>

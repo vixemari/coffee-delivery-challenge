@@ -1,10 +1,29 @@
+import { useContext, useState } from "react";
 import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
-import { PaymentContainer, Info, PaymentOptions } from "./styles";
+import { PaymentContainer, Info, PaymentOptions, Option } from "./styles";
 import { useTheme } from "styled-components";
+import { CoffeeContext } from "../../../../context/context";
 
 
 export function Payment() {
   const theme = useTheme()
+  const { addPayment } =  useContext(CoffeeContext)
+  const [isSelected, setIsSelected] = useState({
+    credit: false,
+    debit: false,
+    cash: false
+  })
+  const handleSelectPayment = (payment: string) => {
+    setIsSelected(prevState => ({
+      ...prevState,
+      credit: payment === 'credit',
+      debit: payment === 'debit',
+      money: payment === 'cash'
+    }))
+    addPayment(payment)
+  }
+
+
   return (
     <PaymentContainer>
       <Info>
@@ -18,24 +37,24 @@ export function Payment() {
           pagar</span>
       </Info>
       <PaymentOptions>
-        <div>
+        <Option data-state={isSelected.credit} onClick={() => handleSelectPayment('credit')}>
           <CreditCard
             color={theme['purple']}
             size={16} />
           <span>Cartão de crédito</span>
-        </div>
-        <div>
+        </Option>
+        <Option data-state={isSelected.debit} onClick={() => handleSelectPayment('debit')}>
           <Bank
             color={theme['purple']}
             size={16} />
           <span>Cartão de débito</span>
-        </div>
-        <div>
+        </Option>
+        <Option data-state={isSelected.cash} onClick={() => handleSelectPayment('cash')}>
           <Money
             color={theme['purple']}
             size={16} />
           <span>Dinheiro</span>
-        </div>
+        </Option>
 
       </PaymentOptions>
 

@@ -9,6 +9,7 @@ export interface Item {
 export interface Order {
   id: string
   items: Item[]
+  payment: 'credit' | 'debit' | 'cash'
 }
 
 export interface CartState {
